@@ -15,7 +15,7 @@ This React application uses GraphQL with Apollo Client to fetch and display data
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/yourusername/tvo_assignment.git
+    git clone https://github.com/nipunh/tvo_assignment.git
     cd tvo_assignment
     ```
 
