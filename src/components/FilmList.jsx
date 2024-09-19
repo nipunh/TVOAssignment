@@ -12,7 +12,7 @@ const FilmList = () => {
         fetchPolicy: 'cache-first', errorPolicy: "all"
     });
 
-    const [sortBy, setSortBy] = useState('title');
+    const [sortBy, setSortBy] = useState('Title');
     const [sortedFilms, setSortedFilms] = useState([]);
 
     useEffect(() => {
@@ -23,10 +23,13 @@ const FilmList = () => {
                 if (sortBy === 'Episode Number') return a.episodeID - b.episodeID;
                 return 0;
             });
-
             setSortedFilms(newSortedFilms);
         }
     }, [sortBy, data])
+
+    const handleChangeFilter = (e) => {
+        setSortBy(e.target.value);
+    }
 
     if (loading) return <Loader />
     if (error) return <Error error={error} />;
@@ -43,7 +46,7 @@ const FilmList = () => {
                             <select
                                 id="sort-select"
                                 className="w-full cursor-default rounded-md bg-white py-2 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6"
-                                onChange={e => setSortBy(e.target.value)}
+                                onChange={handleChangeFilter}
                                 value={sortBy}
                             >
                                 {list.map((option) => (
